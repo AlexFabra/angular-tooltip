@@ -4,6 +4,40 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
 
+# Accepted inputs and subjects
+
+```
+tooltip = ''; //content
+position: TooltipPosition = TooltipPosition.DEFAULT; 
+theme: TooltipTheme = TooltipTheme.DEFAULT;
+showDelay = 0;
+hideDelay = 3;
+showOnInit = false;
+forceClose: Subject<boolean> 
+```
+
+# How to use (example)
+
+Imports in component.ts:
+```
+import { TooltipPosition, TooltipTheme } from 'src/app/shared/infrastructure/directives/tooltip/tooltip.enums';
+import { TooltipDirective } from 'src/app/shared/infrastructure/directives/tooltip/tooltip.directive';
+```
+Declare in component.ts: 
+```
+@ViewChild(TooltipDirective)
+TooltipPosition: typeof TooltipPosition = TooltipPosition;
+TooltipTheme: typeof TooltipTheme = TooltipTheme;
+```
+use in compoment.html
+```
+ <div class="bg-light rounded-circle d-flex justify-content-center align-items-center ms-2"
+   style="height:17px !important; width:21px !important" [tooltip]=inclinationTooltipText
+   [theme]="TooltipTheme.DARK" [position]="TooltipPosition.BELOW">
+      <i class="fas fa-question text-dark" aria-hidden="true" style="font-size: 13px;"></i>
+  </div>
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
